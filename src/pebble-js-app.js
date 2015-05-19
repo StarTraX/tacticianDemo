@@ -1,7 +1,7 @@
 /* jshint -W099 */ //remove warning about mixed spaces and tabs???
 //Pebble.addEventListener("ready",load_data);
 Pebble.addEventListener("ready",function(){
-	
+ 	
 		Pebble.sendAppMessage({ 
 		"44": "0", //	FLAGDATALOADED, // 42 number of course divisions in this series
 		 }, function(e) { //Success callback

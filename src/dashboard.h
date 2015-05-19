@@ -1,4 +1,4 @@
-#pragma once
+#pragma once 
 #include "pebble.h"
 #define DISP_WIDTH 20 //width of each display
 void dashboard_init();

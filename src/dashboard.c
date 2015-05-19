@@ -4,7 +4,7 @@
 #define WARNING_TIME 10 // seconds delay before warning data stopped from phone
 
 TextLayer *perfPcDisp, *gpsTime;
-
+ 
 char * currentCourseText;
 char * courseDivsText; 
 char * seriesList;

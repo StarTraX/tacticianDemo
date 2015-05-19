@@ -3,7 +3,7 @@
 #include "dashboard.h"
 #include "main_menu.h"
 static Window *window;
-
+ 
 // This is a scroll layer
  static BitmapLayer *bitmap_layer;
 GBitmap* mBitmap;

@@ -2,7 +2,6 @@
 #include <main_menu.h>
 # include <aSplash.h>
 
-
 #define NUM_MENU_SECTIONS 1
 #define NUM_FIRST_MENU_ITEMS 3
 
