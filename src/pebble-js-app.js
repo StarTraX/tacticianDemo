@@ -1,5 +1,12 @@
 /* jshint -W099 */ //remove warning about mixed spaces and tabs???
 //Pebble.addEventListener("ready",load_data);
+Pebble.addEventListener("showConfiguration",
+  function(e) {
+	  console.log("showConfiguration: ");
+	var pebbleConfigURL = "http://gpsanimator.com/tactician/pebbleConfig";
+	Pebble.openURL(pebbleConfigURL);
+	}
+); //addEventListener showConfiguration
 Pebble.addEventListener("ready",function(){
  	
 		Pebble.sendAppMessage({ 

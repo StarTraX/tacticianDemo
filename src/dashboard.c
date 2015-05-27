@@ -67,30 +67,7 @@ static void in_received_handler(DictionaryIterator *iter, void *context) {
 	 while (dataReceived != NULL){
 		 // refresh the time last received		 
 		 switch( dataReceived->key ) {
-			 case COURSE:
-			 	currentCourseText = malloc(sizeof(char)*strlen(dataReceived->value->cstring)); //for current course display
-				snprintf(currentCourseText, strlen(dataReceived->value->cstring),  " %s", dataReceived->value->cstring);
-			 	//APP_LOG(APP_LOG_LEVEL_DEBUG,currentCourseText);
-			 	//APP_LOG(APP_LOG_LEVEL_INFO,"COURSE received");
-				break;
-	 		case SERIESLIST: // long list of | delimited series names
-			 	seriesList= malloc(sizeof(char)*strlen(dataReceived->value->cstring)); //for delimited course list
-				snprintf(seriesList, strlen(dataReceived->value->cstring),  "%s", dataReceived->value->cstring);	
-			 	//APP_LOG(APP_LOG_LEVEL_INFO,"SERIESLIST received");
-			 	break;
-			 case SERIESCOUNT: 
-			 	seriesCount = dataReceived->value->uint32;
-			 	//APP_LOG(APP_LOG_LEVEL_INFO,"COURSE received");
-				 break;
-			 case COURSEDIVS:
-			 	courseDivsText = malloc(sizeof(char)*strlen(dataReceived->value->cstring));
-			 	snprintf(courseDivsText, strlen(dataReceived->value->cstring),  "%s", dataReceived->value->cstring);
-			 	//APP_LOG(APP_LOG_LEVEL_INFO,"COURSEDIVS received");
-			 	break;
-			 case COURSEDIVSCOUNT:
-			 	courseDivsCount = dataReceived->value->uint32;
-			 	//APP_LOG(APP_LOG_LEVEL_INFO,"COURSEDIVSCOUNT received");
-			 	break;
+
 			 case FLAGDATALOADED: //special case when data is loaded		 	
 			 	splashScreenMessage = "   'bye, thanks.";
 			 	APP_LOG(APP_LOG_LEVEL_INFO,"FLAGDATALOADED received");
@@ -98,24 +75,7 @@ static void in_received_handler(DictionaryIterator *iter, void *context) {
 			 	show_main_menu();
 			 	//APP_LOG(APP_LOG_LEVEL_INFO,"FLAGDATALOADED received");
 			 	break;
-			case WPTNAME:
-			 	wptName = dataReceived->value->cstring;
-			 	if( text_layer_get_layer(displayFields[dataReceived->key]) != NULL ){ //check if the window hosting the text has been created
-					text_layer_set_text(displayFields[dataReceived->key],dataReceived->value->cstring );	
-				 }
-			 	break;
-			 case NEXTLEGNAME:
-			 	nextLegName = dataReceived->value->cstring;
-			 	if( text_layer_get_layer(displayFields[dataReceived->key]) != NULL ){ //check if the window hosting the text has been created
-					text_layer_set_text(displayFields[dataReceived->key],dataReceived->value->cstring );	
-				 }
-			 	break;
-			 case ROLE: // user's role: "admin" "crew" controls access to input functions
-			 	intRole = strcmp(dataReceived->value->cstring, adminRole);
-				//static char msg[125] ;
-				//snprintf(msg, 125, "ROLE received:%s, intRole %d", dataReceived->value->cstring, intRole);
-				//APP_LOG(APP_LOG_LEVEL_INFO,msg);
-				 break;
+
 			 default : //where most of the work is done: receives all the data from the phone-processed sensor data from the GPS and boat			 	
 			 	snprintf(msg, 125, "Data received, key: %d, value: %s", (int) dataReceived->key, dataReceived->value->cstring);
 				APP_LOG(APP_LOG_LEVEL_INFO, msg);
